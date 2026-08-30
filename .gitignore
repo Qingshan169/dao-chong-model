@@ -3,3 +3,8 @@ __pycache__/
 *.pyo
 .venv/
 venv/
+
+# 评测运行时产物（demo-001 作为样例保留）
+benchmarks/reports/*
+!benchmarks/reports/demo-001/
+benchmarks/claims.skeleton.json

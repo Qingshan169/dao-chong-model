@@ -83,12 +83,20 @@ python -m venv .venv
 | `dao_chong_get_related(ref)` | 取概念关系邻域（in/out 方向 + 对端概念） |
 | `dao_chong_list_concepts()` | 列出全部 14 个核心概念 |
 
+## 可验证基准（L4）
+
+`benchmarks/` 把每个概念的 `falsifiable_claims` 变成可复现实验框架。经对抗验证，10 条主张中**仅 1 条当前真正可证伪**，其余 9 条为伪可证伪（同义反复/缺如型/异质捆绑），每条附修正方案。详见 [benchmarks/](benchmarks/)。
+
+```bash
+python benchmarks/run_benchmark.py --run-id demo-001
+```
+
 ## 路线图
 
 - [x] **L1 结构化本体** — 本仓库的 `dao-chong-schema.json`
 - [x] **L2 可检索知识库** — `src/dao_chong/`（轻量结构化检索 + CLI）
 - [x] **L3 可调用接口** — `mcp_server.py`（MCP 工具，任何 agent 可调）
-- [ ] L4 可验证基准 — 评测集 + 可复现实验
+- [x] **L4 可验证基准** — `benchmarks/`（评测集 + 对抗验证 + 可复现实验框架）
 - [ ] L5 应用层扩展 — 中西医结合、心学唯识、修行、养生等概念的补充结构化
 
 ## 署名

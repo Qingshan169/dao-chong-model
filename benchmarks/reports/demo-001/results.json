@@ -1,0 +1,126 @@
+{
+  "run_id": "demo-001",
+  "schema_version": "0.1.0",
+  "claims_sha256": "208e484d2483c1cd3749a53f3240b773c7d862f454e9e00beb95fe22f201f67a",
+  "summary": {
+    "total": 10,
+    "automated": 3,
+    "needs_data": 6,
+    "manual": 1,
+    "genuinely_falsifiable": 1
+  },
+  "results": [
+    {
+      "claim_id": "chong-qi:no-extra-predictive-power",
+      "automation": "manual",
+      "verdict": "pending_manual",
+      "verification_type": "conceptual-analysis",
+      "is_genuinely_falsifiable": false,
+      "falsification_criterion": "出现一个预先注册、被独立重复证实、M_r 明确否认且命中后禁止再描述的定量预测（实体化增量预测力 >0）→ 经 modus tollens 否证「冲气无额外预测力」。反之，预注册止损条件内（N 次搜索）未找到实体指标 → 否证对立假设「冲气有自性」，「无自性」得以维持（非证实）。",
+      "rubric": "预注册差分预测检验 + 形式化两模型对照，前置划界 gate。步骤：(1) 划界 gate——将「自性」操作化为可观察实体承诺，且显式包含至少一个具体可发生、可观测的伪实例（如「冲气在仪器 Y 可测得可定位的量 X」），预先锁定「超出关系描述」判据，公开注册、可第三方审计；给不出即判「该主张不可证伪」。(2) 形式化两模型——给出可计算的实体模型 M_e 与关系模型 M_r，同输入同结局变量，各自输出预测分布；预注册 M_r 预测边界并承诺实验后禁止修改。(3) 预注册一条 M_e 给出、M_r 明确否认的具体定量预测，在「关系项全部统计固定」约束下检验增量预测力。(4) 止损条件——「N 次搜索后仍未找到实体指标」判为否证对立假设「冲气有自性」，而非确认「无自性」。",
+      "note": "需人工文献/分析判读；划界 gate 给不出可观察伪实例即判不可证伪。"
+    },
+    {
+      "claim_id": "chong-yang:excess-syndrome",
+      "automation": "needs_data",
+      "verdict": "pending_data",
+      "verification_type": "observational",
+      "is_genuinely_falsifiable": false,
+      "protocol": "分两步的横断面诊断效度研究（观察性、非干预）。第 1 步（criterion validity）：用不在结局集合内的客观仪器化标记物（定量舌象、脉波信号、HRV LF/HF、IL-6/TNF-α、24h 动态血压、血浆儿茶酚胺）盲法标定「冲阳偏盛」操作化定义，预注册并冻结，声明「此冻结版本即冲阳偏盛的操作化定义、事后不可修改」。第 2 步（症候共现 + 组间差异）：以冻结定义分组，预测未被用于标定的保留结局（动态血压、睡眠体动/PSQI、烦躁量表、口苦 VAS、面赤红外热像温差）。评定者分离：标定组与结局组由互不知晓的两组评估者分别盲法评定。样本 18–75 岁谱系纳入冲阳/非冲阳/临界三组，N 按 SMD≥0.5、α=0.05、power=0.8 估算（每组≥60）。对照 = 非冲阳偏盛者。统计 = 校正年龄/性别/BMI/吸烟的多变量回归 + ROC-AUC + 因子分析检验症候共现。预承诺：若因子分析无单因子解或校正后组间无差异，被修订的是「冲阳偏盛表现为该症候群」这一理论命题本身，而非量表。",
+      "metric": "保留结局组间标准化差（Cohen's d/SMD）、逐症候 OR、ROC-AUC、Cronbach's α、因子结构；第 1 步标记物对冻结定义的 criterion validity。",
+      "falsification_criterion": "校正后冲阳偏盛组与非冲阳组在保留结局上无显著差异（SMD 95%CI 含 0 或 AUC≤0.55），或症候条目不共现（α<0.6 且因子分析无单因子解）——且按预承诺，被否证的是「冲阳偏盛表现为该症候群」这一理论命题本身，不得以「量表没做对」为由重新定义逃避否证。",
+      "note": "数据到位即升为 automated；判据已预注册，禁止事后修改。"
+    },
+    {
+      "claim_id": "chong-yin:deficiency-syndrome",
+      "automation": "needs_data",
+      "verdict": "pending_data",
+      "verification_type": "observational",
+      "is_genuinely_falsifiable": false,
+      "protocol": "结构同冲阳（两步：criterion validity → 冻结定义 → 保留结局），但须吸收「绝经期强混淆」修正：结局含潮热/盗汗等更年期典型症状，样本却 18–75 岁男女混入。强制预注册年龄、性别、绝经状态、HRT 为协变量，女性按绝经状态分层；潮热/盗汗在未绝经男性中无法测量，须限定纳入人群或改用性别中立结局（咽干 VAS、PSQI、心烦 HADS、虚火上浮体征计数）。独立锚点 = 静息迷走张力/HRV RMSSD 下降、昼夜皮质醇曲线平坦、皮肤电导、基础代谢率。其余（样本量、对照、统计、评定者分离、预承诺）同冲阳。",
+      "metric": "保留结局组间标准化差、逐症候 OR、ROC-AUC、Cronbach's α、因子结构；标记物 criterion validity。",
+      "falsification_criterion": "校正年龄/性别/绝经状态/HRT 后冲阴偏衰组与非冲阴组在保留结局上无显著差异（SMD 95%CI 含 0 或 AUC≤0.55），或症候条目不共现（α<0.6 且无单因子解）——且被否证的是理论命题本身而非量表。",
+      "note": "数据到位即升为 automated；判据已预注册，禁止事后修改。"
+    },
+    {
+      "claim_id": "four-images:xiangshui-traps-junhuo",
+      "automation": "needs_data",
+      "verdict": "pending_data",
+      "verification_type": "interventional",
+      "is_genuinely_falsifiable": false,
+      "protocol": "三臂随机对照试验。纳入：兼具「痰浊困脾肺」体征（舌苔厚腻、胸闷脘痞、形体肥胖、咳痰、便溏、纳呆）与「君火被扰神明症状」（烦躁、失眠、MoCA<26）的成人；排除原发性精神/神经疾病。臂 1 = 标准化化痰浊方（二陈汤/温胆汤，预先登记固定、不含未声明安神药）；臂 2 = 活性对照（无化痰作用的镇静/抗焦虑剂，剥离非特异镇静与期望效应）；臂 3 = 安慰剂。疗程≥8 周。关键修正：中介与结局分时点测量——痰浊标志物（舌苔积分、痰浊证积分、hs-CRP）先于神明结局测量；预注册差异化预测「君火改善在时间上滞后于痰浊改善且具特异时序」；预承诺「充分检验力下间接效应 CI 含 0 即否证理论，不得以复方多靶点为借口」。",
+      "metric": "主结局 = 神明症状（烦躁量表、PSQI、MoCA/神识评分）；机制中介 = 痰浊标志物（舌苔积分、痰浊证积分、hs-CRP）；时间滞后/时序检验。",
+      "falsification_criterion": "化痰浊组神明改善与活性对照无显著差异（组间差 95%CI 含 0），或中介分析（中介先于结局、充分检验力下）间接效应 95%CI 含 0 且直接效应显著——则「相水困君火」通道被否证（预承诺不得以复方多靶点/「非真相水困君火」辩解）。",
+      "note": "数据到位即升为 automated；判据已预注册，禁止事后修改。"
+    },
+    {
+      "claim_id": "trapped-flow:release-beats-replenish",
+      "automation": "needs_data",
+      "verdict": "pending_data",
+      "verification_type": "comparative",
+      "is_genuinely_falsifiable": false,
+      "protocol": "两臂随机对照试验，主假设改回优效。锁定单一病种（稳定期慢阻肺）与单一预指定主结局（6MWD）。解困方案固定为有限可复现的操作化方（行气化痰类，预先登记），补益方案固定为单纯补气方（预先登记），禁止以「个体化」为由事后换方。对照组 = 补益组。疗程≥12 周，随访 52 周。统计 = ITT、混合效应模型。非劣效界值 Δ 由独立第三方或历史 MCID 预先确定，但仅作安全性补充，不作为证伪依据。",
+      "metric": "主结局 = 6MWD（单一预指定）；次要 = 加重率、住院率、52 周复发率、SF-36。",
+      "falsification_criterion": "解困组在主结局上未显著优于补益组（优效检验 p>α 或组间差 95%CI 含 0）→「解困优于补益」被否证（非劣效不构成证伪依据，两臂打平即否证）。",
+      "note": "数据到位即升为 automated；判据已预注册，禁止事后修改。"
+    },
+    {
+      "claim_id": "flow-stability:suppression-rebound",
+      "automation": "needs_data",
+      "verdict": "pending_data",
+      "verification_type": "observational",
+      "is_genuinely_falsifiable": false,
+      "protocol": "前瞻性观察队列 + 停药自然实验，删除同义反复的「停药反弹」作为证伪项（模型先验已写「停药必反弹」，测不出反弹不构成否证，测出也不支持）。将唯一可证伪核心「指标正常但整体恶化」定为主结局：预指定是哪一项指标（如血压），以验证过的生存质量/功能量表（EQ-5D/SF-36）定义「整体」，在结局揭盲前前瞻性标定治疗组（仅压制 vs 恢复流动），倾向评分匹配 + 间断时间序列（ITS）控制适应证混杂。差异化预测：预注册一个特异「困态」生物标记（特定 HRV 模式/炎症谱）以预设效应量预测反弹幅度与时间。「更差」幅度阈值由既往数据预设，不得事后调整。可用既有降压/PPI 停药试验二次分析。",
+      "metric": "「指标正常但整体恶化」比例（组间差，阈值预注册）、预注册困态生物标记对反弹幅度/时间的预测效应量、EQ-5D/疲劳/主观健康轨迹。",
+      "falsification_criterion": "仅压制组在指标正常匹配时点 QoL/功能不劣于恢复流动组（未达预注册「更差」幅度阈值），或预注册困态生物标记以预设效应量不能预测反弹幅度/时间 →「压制→指标正常但整体恶化」被否证（「反弹」本身不作为证伪项）。",
+      "note": "数据到位即升为 automated；判据已预注册，禁止事后修改。"
+    },
+    {
+      "claim_id": "flow-stability:release-beats-suppression",
+      "automation": "needs_data",
+      "verdict": "pending_data",
+      "verification_type": "comparative",
+      "is_genuinely_falsifiable": false,
+      "protocol": "两臂随机对照试验，以具体预指定硬终点替换「自愈率」。锁定单一病种（原发性高血压）。解困组 = 操作化移除流动障碍方（固定、预先登记）；压制组 = 指南强达标（强化降压）。单一预注册主结局 = 52 周时停用一切指标药后仍维持正常的中位时间（或复发时间），MCID 与结局定义预先注册。两臂在同一套「停药后自愈」标准下评估（压制臂也须接受有计划停药评估，否则无法比较）。随访固定为 52 周硬终点，不得以「延长随访」寻找显著性。统计 = ITT、Cox 生存/混合效应模型。",
+      "metric": "主结局 = 停药后维持正常中位时间/复发时间（单一预注册硬终点）；次要 = 主观健康、QoL、硬终点事件。",
+      "falsification_criterion": "解困组在预注册单一主结局上不优于压制组（HR 95%CI 含 1 或组间差 95%CI 含 0）→「解困比压制更能促进长期自愈」被否证。",
+      "note": "数据到位即升为 automated；判据已预注册，禁止事后修改。"
+    },
+    {
+      "claim_id": "meta:ding-shu-reduces-offtopic",
+      "automation": "automated",
+      "verdict": "ready_for_test_set",
+      "verification_type": "ablation",
+      "is_genuinely_falsifiable": true,
+      "experiment": "三臂消融。构造「主线+干扰」问题集（N≥100，分层抽样，每题埋第一矛盾 + 2-4 干扰子问/冗余背景/无关情绪），人工黄金标签标注第一矛盾与期望主线程。臂 A = 定枢（先输出第一矛盾与主线再作答）；臂 B = 无定枢（其余 prompt/工具/温度/模型/分流不变）；臂 C = 结构化脚手架对照（注入等长「先复述问题再作答」但不含「第一矛盾」概念，剥离「定枢」概念增量与「结构化/更多 token」效应）。同题集每臂跑 K≥3 次取多数一致，打乱题序。评分：LLM-as-judge 双盲，但屏蔽锚定输出（只提交最终回答部分给 judge），统一固定模板抹平格式差异；抽 20% 样本人工校准 judge 信度（Cohen's κ≥0.7）。",
+      "metric": "偏题率 = 未命中黄金主线程题数/总题数（越低越好）；辅 = 定枢命中率、主线程 token 占比。主判据 = 定枢臂相对脚手架对照臂的偏题率差（单侧配对检验，α=0.05，预注册最小效应量 10pp）。",
+      "falsification_criterion": "两个独立条件须同时满足才证实，任一不满足即证伪：单侧 p<0.05 且方向正确、且效应量≥预注册 10pp。即「定枢臂偏题率不显著低于脚手架对照臂（p≥0.05 或增量<10pp 或方向错误）」→「定枢减少偏题」被证伪。",
+      "runner_step": "run_experiment(claim)：运行 meta_ablation 三臂实验 → 算偏题率 → 机械对比预注册阈值（单侧 p<0.05 且 Δ≥10pp）→ 出 verdict（supported/falsified/inconclusive）+ 记录 judge κ 与随机种子。",
+      "note": "实验函数接口已定义，缺测试集 + 黄金标签，接入即一键跑。"
+    },
+    {
+      "claim_id": "meta:zhao-yan-reduces-hallucination",
+      "automation": "automated",
+      "verdict": "ready_for_test_set",
+      "verification_type": "ablation",
+      "is_genuinely_falsifiable": false,
+      "experiment": "多臂消融。臂 1 = fast（快通路无照验）；臂 2 = full（完整九节点闭环含照验）；臂 3 = full-minus-照验（闭环跳过照验节点，单一变量消融——照验因果证据的唯一来源）；臂 4 = 信息匹配对照「检索并阅读」（给与照验臂同样多的外部信息但不含照验验证协议，剥离「外部知识」与「照验协议」的混淆）。测试集四子集：(a) 时效/可查证事实题；(b) 诱导幻觉题（过期 CEO/版本号等貌似合理错误先验）；(c) 不可答子集（黄金答案 = 应拒答）；(d) 外部来源错误/不全子集（测照验是否传播或放大来源错误）。每题跑 K≥3 次。事实断言抽取做独立信度校验。关键约束：预注册「可答子集作答率」硬约束——照验臂幻觉率下降必须在作答率不显著下降前提下才可归因于「核验」，否则判定为「以拒答换低幻觉」。",
+      "metric": "幻觉率 = 含 ≥1 条无据/错误断言答案数/总答案数（越低越好）；辅 = 事实精确率、不可答子集拒答率、可答子集作答率（硬约束）、引证率、来源错误子集错误传播率。",
+      "falsification_criterion": "full（有照验）幻觉率不显著低于 full-minus-照验（单侧 p≥0.05 或增量<10pp）→ 证伪；或照验臂在可答子集作答率显著下降（以拒答换低幻觉）→ 主张不成立；或在外部来源错误子集上照验传播/放大错误 → 主张不成立。fast vs full 差异不构成照验因果证据（受整环混淆），不得用于证实。",
+      "runner_step": "run_experiment(claim)：运行照验消融（fast/full/full-minus-照验/信息匹配对照四臂）→ 算幻觉率 + 可答子集作答率 + 来源错误传播率 → 机械对比预注册阈值 → 出 verdict + 记录事实断言抽取信度 κ。",
+      "note": "实验函数接口已定义，缺测试集 + 黄金标签，接入即一键跑。"
+    },
+    {
+      "claim_id": "meta:gui-cang-reduces-pollution",
+      "automation": "automated",
+      "verdict": "ready_for_test_set",
+      "verification_type": "ablation",
+      "is_genuinely_falsifiable": false,
+      "experiment": "持续学习消融 + 非平凡基线。采用「真值/质量门控」语义——污染事实注入为候选写入（用户明确要求记住的错误事实，如「请记住 X 是 A」而实际是 B），使 ON/OFF 在写入量上可比，门控的唯一差异 = 真值/时效判断（而非格式匹配）。臂 1 = 归藏门控；臂 2 = 简单预指定门控规则（近因/频次阈值）；臂 3 = 随机门控；臂 4 = 无门控全量写（作操纵检查基线）。连续 N 个学习片段，每片含 (a) 真事实 (b) 污染事实 (c) 噪音。两条操纵检查：每条污染事实先测 episode 前模型先验（只保留「episode 前答对/预训练推不出的全新假事实」条目）；加「OFF 臂污染写入成功」检查证明无门控臂确实学到污染。跑完后用探针题测污染复现率与保留率。",
+      "metric": "污染复现率 = 复现假事实探针数/污染探针总数（越低越好）、保留率 = 正确回答真事实探针数/真事实探针总数（越高越好）、联合目标（低污染 + 低遗忘）；操纵检查 = OFF 臂污染写入成功率、污染事实先验基线。",
+      "falsification_criterion": "归藏在「低污染 + 低遗忘」联合目标上不优于更简单预指定门控规则（污染复现率不显著低于简单门控 或 保留率较简单门控显著下降）→「归藏门控减少记忆污染」被证伪（仅胜过无门控稻草人不足以证实）。",
+      "runner_step": "run_experiment(claim)：运行归藏消融（4 臂 + 2 操纵检查）→ 算污染复现率 + 保留率 + 联合目标 → 机械对比简单门控基线 → 出 verdict + 记录操纵检查通过与否。",
+      "note": "实验函数接口已定义，缺测试集 + 黄金标签，接入即一键跑。"
+    }
+  ]
+}
