@@ -1,11 +1,20 @@
 {
-  "schema_version": "0.1.0",
-  "note": "道冲模型可证伪主张评测集（L4）。每条含：本体骨架字段、对抗验证裁决（is_genuinely_falsifiable + weakness + suggestion）、以及吸收对抗验证修正后的最终验证方案（method/metric/falsification_criterion/runner_step）。核心结论：10 条中仅 1 条（定枢减偏题）当前真正可证伪，其余 9 条为「伪可证伪」（同义反复/缺如型/异质捆绑），须按修正方案重新设计。",
+  "schema_version": "0.2.0",
+  "note": "道冲模型可证伪主张评测集（L4+L5）。每条含：本体骨架字段、对抗验证裁决（is_genuinely_falsifiable + weakness + suggestion）、以及吸收对抗验证修正后的最终验证方案（method/metric/falsification_criterion/runner_step）。核心结论：16 条中 7 条当前真正可证伪（核心本体 1 条 + 应用层 6 条），其余 9 条为核心本体的「伪可证伪」（同义反复/缺如型/异质捆绑）。L5 应用层 6 条新 claim 经对抗验证全部真可证伪——L4 的教训被有效应用。",
   "adversarial_summary": {
-    "total": 10,
-    "genuinely_falsifiable": 1,
+    "total": 16,
+    "genuinely_falsifiable": 7,
     "pseudo_falsifiable": 9,
-    "only_genuinely_falsifiable_id": "meta:ding-shu-reduces-offtopic"
+    "core_genuinely_falsifiable_id": "meta:ding-shu-reduces-offtopic",
+    "application_genuinely_falsifiable_ids": [
+      "signal-matrix:completeness-predicts-efficacy",
+      "feedback-loop:ganzhi-mapping",
+      "modern-intervention:positioning-differential-efficacy",
+      "flow-resilience:overprotection-degrades-recovery",
+      "wo-zhi:seeing-releases-grasping",
+      "cultivation:observation-leads-to-zhonghe"
+    ],
+    "application_layer_pseudo_falsifiable": 0
   },
   "claims": [
     {
@@ -177,6 +186,108 @@
       "metric": "污染复现率 = 复现假事实探针数/污染探针总数（越低越好）、保留率 = 正确回答真事实探针数/真事实探针总数（越高越好）、联合目标（低污染 + 低遗忘）；操纵检查 = OFF 臂污染写入成功率、污染事实先验基线。",
       "falsification_criterion": "归藏在「低污染 + 低遗忘」联合目标上不优于更简单预指定门控规则（污染复现率不显著低于简单门控 或 保留率较简单门控显著下降）→「归藏门控减少记忆污染」被证伪（仅胜过无门控稻草人不足以证实）。",
       "runner_step": "run_experiment(claim)：运行归藏消融（4 臂 + 2 操纵检查）→ 算污染复现率 + 保留率 + 联合目标 → 机械对比简单门控基线 → 出 verdict + 记录操纵检查通过与否。"
+    },
+    {
+      "id": "signal-matrix:completeness-predicts-efficacy",
+      "concept": "信号矩阵",
+      "claim": "若「方剂是精密信号矩阵」且矩阵完备度关乎疗效，则在病机由独立共识预先固定、同病种同证候的方剂样本中，「病机节点—信号覆盖度」与「药味可回述必要性」双重评分（盲法、预注册编码手册）更高的方剂，其外部疗效结局应显著优于评分低者；若完备度高的方剂不优于完备度低者，则该主张被证伪",
+      "source": "chongqi-signal-theory",
+      "automation": "needs_data",
+      "verification_type": "comparative",
+      "adversarial_verdict": {
+        "is_genuinely_falsifiable": true,
+        "weakness": "残余风险三点：(1) 评分手册若由已知有效方剂反推构建，则「完备度高」本身已被疗效校准，阳性在构念层部分同义（陷阱1循环）；(2) 同病种同证候筛选可能使各方病机节点近乎同一，完备度评分方差趋零、高/低分组不可分，试验无功效；(3) 「外部疗效结局」若未锁定单一主结局，可跨结局钓鱼救回（陷阱6）。",
+        "suggestion": "预注册并冻结 herb→node 映射手册——仅由理论节点定义 + 独立专家共识构建，与疗效结局隔离、对结局盲法；预注册单一主要疗效终点、优效界与等效界（区分「真等效」与「统计功效不足」）；正式检验前用预注册的方差充分性检验确认完备度评分在样本内有足够方差，否则判定试验无功效并终止。"
+      },
+      "method": "匹配队列 / 回顾性处方审计（盲法编码 + 预注册评分手册）。纳入同病种、同证候、病机由独立共识预先固定的方剂样本。由对结局盲法的评定者按预注册手册为每方打分（覆盖度 + 必要性两分量）。评分手册构建数据源与疗效结局严格隔离，不以已知疗效方剂做锚。预注册单一主结局（如标准化缓解率），其余结局降为次要并做多重比较校正。正式检验前跑预注册的完备度评分方差充分性检验。",
+      "metric": "主结局 = 标准化缓解率（单一预注册）；完备度评分方差充分性检验；高/低完备度组的疗效差（优效界 + 等效界）。",
+      "falsification_criterion": "按预注册手册盲法评分后，高完备度组在预注册主结局上经预设优效检验不显著优于低完备度组（且经预设等效界证明其真不优于，排除功效不足），且完备度评分通过预注册方差充分性检验 → 「理法方药一一对应是有效方剂的结构特征」被否证。",
+      "runner_step": "emit_experiment_design(claim)：protocol（冻结手册 + 单一主结局 + 方差充分性检验）+ data_spec + 分析计划；verdict=pending_data。"
+    },
+    {
+      "id": "feedback-loop:ganzhi-mapping",
+      "concept": "反馈闭环",
+      "claim": "若反馈闭环的「服后信号—处方/机体状态」映射成立，则服药后新发口干者，其「燥性药负荷超标」或「基线阴液不足」两项预注册判据至少其一成立的比例，应显著高于未新发口干者；若口干组两项判据均不高于对照且存在相当比例两项皆不满足的口干病例，则该映射被证伪",
+      "source": "chongqi-signal-theory",
+      "automation": "needs_data",
+      "verification_type": "observational",
+      "adversarial_verdict": {
+        "is_genuinely_falsifiable": true,
+        "weakness": "残余风险：(1) 「燥性药→口干」一臂近同义反复——燥性药在药理上即以口干为已知不良反应，真正有牙齿的是「阴液不足」独立臂与「两项皆不满足」证伪条件；(2) 原因集穷举性依赖源文本确只有「偏燥 + 阴液不足」两因，模型可事后追加第三因救回（陷阱3）；(3) 「相当比例」未数字化，阈值过松则判据恒真。",
+        "suggestion": "要求模型在预注册时明确承诺「口干原因集 = 偏燥 + 阴液不足」为穷举（拒绝承诺则降级不挂 claim）；预注册「相当比例」阈值（如 >20%）与两判据的非平凡阈值；燥性药清单取自独立于「是否口干」结局的药典/热性分类，不得事后按谁口干归类；基线阴液不足用独立评定者 + 预注册量表盲法评分。"
+      },
+      "method": "回顾性处方审计 / 前瞻队列（预注册燥性药清单与阴液不足阈值，盲法评定）。在中药干预队列中，比较服药后新发口干者与未新发口干者，在「燥性药负荷超标」「基线阴液不足」两项预注册判据上的满足率。关键预注册：原因集穷举承诺（不可追加第三因）、「两项皆不满足」的占比阈值（如 >20%）、燥性药清单独立于结局、阴液不足由独立评定者按冻结量表评定。",
+      "metric": "两项判据各自的满足率（口干组 vs 对照）；两项皆不满足的口干病例占比（预注册阈值）。",
+      "falsification_criterion": "在穷举承诺 + 预注册清单/阈值下，新发口干组在「燥性药负荷超标」与「基线阴液不足」两项上阳性率均不显著高于未口干对照，且口干病例中两项皆不满足者占比 ≥ 预注册阈值（如 20%）→ 「口干→偏燥或阴液不足」映射被否证。",
+      "runner_step": "emit_experiment_design(claim)：protocol（穷举承诺 + 预注册清单/阈值 + 独立盲法评定）+ data_spec + 分析计划；verdict=pending_data。"
+    },
+    {
+      "id": "modern-intervention:positioning-differential-efficacy",
+      "concept": "现代干预的冲气观",
+      "claim": "若现代干预的冲气损伤定位（化疗伤体层/相水/肾水/用层；放疗伤津耗气）正确，则按该定位选定的针对性调理相比非针对性通用支持，应使预设毒副反应指标显著更优；若针对性调理不优于通用支持，则损伤定位被证伪",
+      "source": "integrative-medicine",
+      "automation": "needs_data",
+      "verification_type": "interventional",
+      "adversarial_verdict": {
+        "is_genuinely_falsifiable": true,
+        "weakness": "残余风险：模型「定位」大多与已知药理学事实重合（化疗→骨髓抑制、放疗→口干均属常识），故「针对性调理优于通用支持」近似「已知支持疗法优于非特异支持」，近乎必然为真的弱测试（陷阱4相邻），模型独有的冲气层语言未真正置于风险中；「通用支持」若设成弱假对照则更甚；「针对性/通用」边界未冻结。",
+        "suggestion": "把「定位」设计为可错的非显然预测——要求模型定位出一个药理学上不显然、但据冲气层可推出的靶层/药组，并预测该针对性方案优于标准支持；预注册两臂完整干预清单，确保「通用支持」是含真实已知有效措施的主动对照（非安慰剂）；单一主结局。"
+      },
+      "method": "随机化支持性治疗对照试验（定位调理 vs 通用支持）。纳入接受标准化疗/免疫/靶向/放疗的肿瘤患者。关键修正：定位方案必须是「据冲气层可推出、而标准支持逻辑推不出」的非显然药组，从而把道冲独有语言置于风险；预注册两臂完整成分清单（通用支持含真实有效的支持措施）；预注册单一毒副反应主结局（如中性粒细胞恢复速度）与优效界。",
+      "metric": "主结局 = 中性粒细胞恢复速度（单一预注册）；次要 = 津液亏虚量表、≥3 级不良反应发生率。",
+      "falsification_criterion": "按预注册冲气定位选定的针对性调理，在预注册毒性主结局上经预设优效检验不显著优于「真实有效力的通用支持」组（等于或更差）→ 「冲气损伤定位转化为差异化疗效」被否证。",
+      "runner_step": "emit_experiment_design(claim)：protocol（非显然定位 + 两臂完整清单 + 单一主结局 + 优效界）+ data_spec + 分析计划；verdict=pending_data。"
+    },
+    {
+      "id": "flow-resilience:overprotection-degrades-recovery",
+      "concept": "流动韧性",
+      "claim": "若「过度保护使恢复系统退化」成立，则长期处于过度保护（扰动被系统性屏蔽）的一组，在标准化扰动后恢复到基线的时间应显著长于常规扰动暴露对照组；若过度保护组恢复时间等于或短于对照，则该主张被证伪",
+      "source": "health-preservation-flow-resilience",
+      "automation": "needs_data",
+      "verification_type": "interventional",
+      "adversarial_verdict": {
+        "is_genuinely_falsifiable": true,
+        "weakness": "残余风险：若非随机分配，「过度保护」现实上常与基线虚弱相关（被保护者本就弱），存在选择混杂；「过度保护」操作化（长期制动/无菌/回避负荷）可能与废用/基础疾病混淆；恢复标记/容差/观测窗需冻结并指定单一主结局。",
+        "suggestion": "随机分配保护条件（实验设计而非观察匹配）；冻结恢复标记（HRV 或功能容量，择一为主）、「回到基线 ± 预设容差」的容差数值、标准化扰动的强度/持续时间与观测窗；预注册单一主结局与检验方向。"
+      },
+      "method": "随机化对照恢复动力学试验（过度保护组 vs 常规扰动暴露对照组）。随机分配保护条件以保基线可交换，消除「被保护者本就弱」的选择混杂。两期：长期暴露期（一组系统性屏蔽扰动，一组规律暴露适度扰动）→ 终期给予两组完全相同的标准化扰动 → 测量恢复到扰动前基线的时间。预注册恢复标记、基线容差数值、扰动强度与观测窗。",
+      "metric": "主结局 = 恢复到基线 ± 预设容差的时间（单一预注册标记）；次要 = 恢复幅度、免疫/功能指标。",
+      "falsification_criterion": "随机化后，过度保护组恢复到基线 ± 预设容差的时间经预设检验不显著长于（等于或短于）常规扰动暴露对照组 → 「过度保护使恢复系统退化」被否证。",
+      "runner_step": "emit_experiment_design(claim)：protocol（随机化 + 冻结标记/容差/扰动/观测窗 + 单一主结局）+ data_spec + 分析计划；verdict=pending_data。"
+    },
+    {
+      "id": "wo-zhi:seeing-releases-grasping",
+      "concept": "我执",
+      "claim": "若「看见本身即松动」成立，则在诱发抓取状态后，仅给予觉照标记干预（不压制不替换）组的紧张/执着指标下降幅度应显著大于等时中性分心对照组；若觉照组不优于分心组，则该命题被证伪",
+      "source": "xin-as-chongqi-ming",
+      "automation": "needs_data",
+      "verification_type": "interventional",
+      "adversarial_verdict": {
+        "is_genuinely_falsifiable": true,
+        "weakness": "残余风险：「觉照标记」与「分心」同属注意操纵，若觉照经一般性注意转移而非特异「看见」机制起作用，分心对照可能同样有效（区分灵敏度不足，但不使证伪判据失效）；实验室诱发抓取状态的生态效度有限；「看见」的干预忠实度不可观察。",
+        "suggestion": "预注册标记与分心两组的指导语逐字稿与内容/时程对等（除「标记为抓取」这一特异要素外其余相同），以纯化特异机制；预注册单一主结局（主观执着强度自评或 HRV，择一）与方向；预注册忠实度核查，阻断「未真正看见」救回。"
+      },
+      "method": "随机化心理生理对照试验（觉照标记 vs 等时中性分心）。实验室诱发可测「抓取/紧张」状态后，觉照组仅做「标记这是抓取」的非评判觉知标注（不引导压制/替换），分心组做等时中性任务。预注册诱导范式、两臂指导语逐字稿（除特异要素外对等）、单一主松动结局与方向、忠实度核查。",
+      "metric": "主结局 = 紧张/执着指标下降幅度（主观执着强度自评或 HRV，单一预注册）；次要 = 回避行为计数。",
+      "falsification_criterion": "觉照标记组在预注册主松动指标上经预设检验不显著优于等时中性分心对照组 → 「看见本身即松动」被否证。",
+      "runner_step": "emit_experiment_design(claim)：protocol（主动分心对照 + 逐字指导语 + 单一主结局 + 忠实度核查）+ data_spec + 分析计划；verdict=pending_data。"
+    },
+    {
+      "id": "cultivation:observation-leads-to-zhonghe",
+      "concept": "修行四维度",
+      "claim": "若「修行（观照而非压制）导向中和」成立，则长期非压制式观照练习者其心理/生理灵活性应显著高于压制策略组与无练习对照；若观照组灵活性不高于压制组或对照，或反而僵化，则「修行导向中和」被证伪",
+      "source": "practice-and-cultivation",
+      "automation": "needs_data",
+      "verification_type": "interventional",
+      "adversarial_verdict": {
+        "is_genuinely_falsifiable": true,
+        "weakness": "残余风险：「中和」到 AAQ-II/HRV 的构念桥接是理论跳步，被否证时模型可退回「AAQ-II 不是中和」（须预注册锁定）；多结局（AAQ-II/HRV/皮质醇）需预注册主结局与多重性校正；观照练习的「非压制」保真度需核查。",
+        "suggestion": "预注册锁定「中和」= 心理/生理灵活性构念的操作定义与量表；三臂（观照/压制/等待）随机化，冻结两干预方案与练习时长匹配规则；预注册单一主结局、优效界与「僵化」（过度亢进或过度关闭）的判定阈值。"
+      },
+      "method": "三臂随机对照试验（观照练习组 vs 压制策略组 vs 等待对照）。预注册锁定「中和」= 心理生理灵活性的操作定义（建议 AAQ-II 为主、HRV 应激恢复斜率为次）；冻结观照/压制两干预手册与练习时长/频率匹配规则；结局盲法评估。预注册「僵化」判定阈值（AAQ-II 低于基线且 HRV 下降）。",
+      "metric": "主结局 = 心理灵活性（AAQ-II，单一预注册）；次要 = HRV 应激恢复斜率、皮质醇曲线、僵化指标。",
+      "falsification_criterion": "观照组在预注册灵活性主结局上不显著优于压制组与等待对照（等于或更差），或观照组出现预注册的僵化指标 → 「修行（观照）导向中和」被否证。",
+      "runner_step": "emit_experiment_design(claim)：protocol（三臂 + 锁定中和操作定义 + 单一主结局 + 僵化阈值）+ data_spec + 分析计划；verdict=pending_data。"
     }
   ]
 }

@@ -33,11 +33,11 @@
 
 `dao-chong-schema.json` 是道冲模型核心本体的机器可读版本（JSON-LD，W3C 语义网标准）：
 
-- **14 个概念**、**15 条关系**，构成一张有向图，锚点是冲气。
+- **25 个概念**（核心 14 + 应用层 11）、**29 条关系**，构成一张有向图，锚点是冲气。
 - 每个概念含：`definition`（精确定义）、`ontology_status`（本体地位，防实体化）、`attributes`（关键属性）、`usage_grammar`（使用语法）、`falsifiable_claims`（可证伪主张）。
 - `falsifiable_claims` 是可验证性的落点——把理论变成可被第三方检验的命题。
 
-概念类别：`core_concept`（核心）/ `scaffold`（脚手架）/ `functional_network`（功能网络）/ `pathology_model`（病理模型）/ `principle`（原则）/ `operational_grammar`（操作语法）。
+概念类别：`core_concept`（核心）/ `scaffold`（脚手架）/ `functional_network`（功能网络）/ `pathology_model`（病理模型）/ `principle`（原则）/ `operational_grammar`（操作语法）/ `application`（应用层）。
 
 ## 检索与调用
 
@@ -81,11 +81,11 @@ python -m venv .venv
 | `dao_chong_retrieve(query, limit)` | 按词/拼音检索概念 |
 | `dao_chong_get_concept(ref)` | 取单概念完整卡片（定义/本体地位/可证伪主张/关系） |
 | `dao_chong_get_related(ref)` | 取概念关系邻域（in/out 方向 + 对端概念） |
-| `dao_chong_list_concepts()` | 列出全部 14 个核心概念 |
+| `dao_chong_list_concepts()` | 列出全部 25 个概念（核心 + 应用层） |
 
 ## 可验证基准（L4）
 
-`benchmarks/` 把每个概念的 `falsifiable_claims` 变成可复现实验框架。经对抗验证，10 条主张中**仅 1 条当前真正可证伪**，其余 9 条为伪可证伪（同义反复/缺如型/异质捆绑），每条附修正方案。详见 [benchmarks/](benchmarks/)。
+`benchmarks/` 把每个概念的 `falsifiable_claims` 变成可复现实验框架。经对抗验证，16 条主张中**7 条当前真正可证伪**（核心 1 + 应用层 6），其余 9 条为伪可证伪（同义反复/缺如型/异质捆绑），每条附修正方案。详见 [benchmarks/](benchmarks/)。
 
 ```bash
 python benchmarks/run_benchmark.py --run-id demo-001
@@ -97,7 +97,7 @@ python benchmarks/run_benchmark.py --run-id demo-001
 - [x] **L2 可检索知识库** — `src/dao_chong/`（轻量结构化检索 + CLI）
 - [x] **L3 可调用接口** — `mcp_server.py`（MCP 工具，任何 agent 可调）
 - [x] **L4 可验证基准** — `benchmarks/`（评测集 + 对抗验证 + 可复现实验框架）
-- [ ] L5 应用层扩展 — 中西医结合、心学唯识、修行、养生等概念的补充结构化
+- [x] L5 应用层扩展 — 中西医结合、心学唯识、修行、养生等概念的补充结构化（11 概念，6 条真可证伪 claim 经对抗验证）
 
 ## 署名
 

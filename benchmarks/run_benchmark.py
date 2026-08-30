@@ -5,11 +5,11 @@
 
 三路分派：
 - automated（3 条 meta 消融）：实验框架就绪，输出测试集规格，等测试集接入即一键跑
-- needs_data（6 条临床）：emit_experiment_design → 实验设计（protocol + 判据）
+- needs_data（12 条临床）：emit_experiment_design → 实验设计（protocol + 判据）
 - manual（1 条概念）：emit_falsification_criterion → 证伪判据 + 评分量表
 
 核心纪律（来自对抗验证）：判据预先注册在 claim 内，运行器只做机械对比、不做解释；
-「可验证」本身被严格检验——当前 10 条中仅 1 条真可证伪，其余 9 条须按修正方案重设计。
+「可验证」本身被严格检验——当前 16 条中 7 条真可证伪（核心 1 + 应用层 6），9 条伪可证伪须按修正方案重设计。
 
 用法：python benchmarks/run_benchmark.py [--run-id <id>] [--out-dir <dir>]
 """
@@ -130,9 +130,9 @@ def _render_markdown(claims_data: dict, run_id: str, results_data: dict) -> str:
         f"- needs_data（需临床数据）：{s['needs_data']} 条",
         f"- manual（需人工判读）：{s['manual']} 条",
         "",
-        "> 核心结论：道冲模型有 10 条可证伪主张，但经对抗验证，**仅 1 条当前真正可证伪**。",
-        "> 其余 9 条是「伪可证伪」——同义反复（症候定义循环、停药必反弹由定义成立）、",
-        "> 缺如型主张（逻辑上无法否证）、或靠异质捆绑圆过去。这是「照验」在道冲模型自身上量出的现状。",
+        f"> 核心结论：道冲模型有 {s['total']} 条可证伪主张，经对抗验证 **{s['genuinely_falsifiable']} 条当前真正可证伪**。",
+        "> 核心本体 10 条中 9 条是「伪可证伪」——同义反复（症候定义循环、停药必反弹由定义成立）、",
+        "> 缺如型主张（逻辑上无法否证）、或靠异质捆绑圆过去；应用层 6 条新 claim 经对抗验证全部真可证伪。",
         "",
         "## 结果（按 automation 分派）",
         "",

@@ -8,10 +8,10 @@
   "@type": "dcx:Model",
   "name": "道冲阴阳和合系统模型",
   "name_en": "Dao-Chong Model of Yin-Yang Harmony",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "model_version": "V3 (2026-08-15)",
   "dc:description": "以冲气为核心的完整生命系统解释框架，贯通中医临床与儒释道哲学；冲气为关系—过程动态（无自性），体用象道为观察脚手架，流动即稳定为核心命题。",
-  "scope_note": "本文件为 L1 核心本体：只含理论骨架（约 14 概念），应用层（中西医结合、心学唯识、修行、养生等）待后续版本扩展。",
+  "scope_note": "本文件为 L5 完整本体：核心本体（14 概念）+ 应用层（11 概念）。应用层 falsifiable_claims 均经对抗验证，只保留真可证伪者（6 条），描述性/规范性概念不挂（宁缺毋滥）。",
 
   "concepts": [
     {
@@ -245,6 +245,198 @@
       "usage_grammar": [],
       "falsifiable_claims": [],
       "source": "flow-as-stability"
+    },
+    {
+      "@id": "dcx:signal",
+      "@type": "dcx:Concept",
+      "name": "冲气信号",
+      "pinyin": "chōng qì xìn hào",
+      "category": "application",
+      "definition": "凡进入生命系统并改变其流动状态者，皆为冲气信号——中药、方剂、针灸、饮食、呼吸、睡眠、情绪、节气、气候、运动、医患交流、治疗信念，以及化疗、免疫、靶向、放疗等现代医学干预。",
+      "ontology_status": "分类性概念——信号不是实体，是「进入系统并改变流动状态者」的统称。",
+      "attributes": [
+        "中药信号结构：四气（动力趋向）、五味（作用方式）、升降浮沉（方向）、归经（地址）、毒性与峻缓（强度与风险）、配伍（组合效应）",
+        "同一信号进入不同系统，被不同体用象道重新编码，产生不同输出（「因人因时因地制宜」的冲气表达）"
+      ],
+      "usage_grammar": ["问「这个干预改变的是哪个层的流动」，不问「这个干预是什么」"],
+      "falsifiable_claims": [],
+      "source": "chongqi-signal-theory"
+    },
+    {
+      "@id": "dcx:signal-matrix",
+      "@type": "dcx:Concept",
+      "name": "信号矩阵",
+      "pinyin": "xìn hào jǔ zhèn",
+      "category": "application",
+      "definition": "方剂是精密信号矩阵——不同药物在体用象道中各司其职（补体/安用/调象/通道/引经/制约偏性/给邪出路/保护中焦），理法方药一一对应。",
+      "ontology_status": "操作性概念——方剂的信号解读模型，非方剂实体。",
+      "attributes": [
+        "八角色：补体 / 安用 / 调象 / 通道 / 引经 / 制约偏性 / 给邪出路 / 保护中焦",
+        "病机中每一关键节点在方中都应有相应信号",
+        "方中每味药都应能回到病机结构解释其必要性"
+      ],
+      "usage_grammar": ["高明的方剂应理法方药一一对应：病机关键节点——信号全覆盖，方中每味药——必要性可回述"],
+      "falsifiable_claims": [
+        "若「方剂是精密信号矩阵」且矩阵完备度关乎疗效，则在病机由独立共识预先固定、同病种同证候的方剂样本中，「病机节点—信号覆盖度」与「药味可回述必要性」双重评分（盲法、预注册编码手册）更高的方剂，其外部疗效结局应显著优于评分低者；若完备度高的方剂不优于完备度低者，则该主张被证伪"
+      ],
+      "source": "chongqi-signal-theory"
+    },
+    {
+      "@id": "dcx:feedback-loop",
+      "@type": "dcx:Concept",
+      "name": "反馈闭环",
+      "pinyin": "fǎn kuì bì huán",
+      "category": "application",
+      "definition": "动态辨证的核心——临床不是一次性判断，而是输入信号→观察输出→修正信号→再观察输出。",
+      "ontology_status": "方法论概念——自适应辨证的流程描述，非实体。",
+      "attributes": [
+        "处方后的变化是系统输出的新信息",
+        "服后胃胀→相水不受；服后口干→药性偏燥或阴液不足；服后困重→湿困未化或补药壅滞；服后睡眠改善→君火得安"
+      ],
+      "usage_grammar": ["临床不是一次性判断，而是输入信号→观察输出→修正信号→再观察输出"],
+      "falsifiable_claims": [
+        "若反馈闭环的「服后信号—处方/机体状态」映射成立，则服药后新发口干者，其「燥性药负荷超标」或「基线阴液不足」两项预注册判据至少其一成立的比例，应显著高于未新发口干者；若口干组两项判据均不高于对照且存在相当比例两项皆不满足的口干病例，则该映射被证伪"
+      ],
+      "source": "chongqi-signal-theory"
+    },
+    {
+      "@id": "dcx:modern-intervention",
+      "@type": "dcx:Concept",
+      "name": "现代干预的冲气观",
+      "pinyin": "xiàn dài gān yù",
+      "category": "application",
+      "definition": "用冲气语言理解现代医学干预对生命系统的冲气改变：化疗（峻烈攻伐，伤体层/相水/肾水/用层）、免疫治疗（调动自身防御但可能引动相火君火）、靶向（特定通路抑制致通道开阖失度）、放疗（局部火热燥烈，伤津耗气灼络生瘀）。",
+      "ontology_status": "应用框架——中西医结合的转译接口；不排斥现代医学。",
+      "attributes": [
+        "化疗 → 体层受损 / 相水受困 / 肾水受损 / 用层不稳",
+        "免疫治疗 → 既可能扶正，也可能引动相火、君火、湿热、毒热",
+        "靶向 → 通道开阖失度 / 相火被扰 / 相水运化受损",
+        "放疗 → 局部火热燥烈 / 伤津耗气 / 灼络生瘀 / 纤维化通道闭塞"
+      ],
+      "usage_grammar": ["调理重点：护中焦、保骨髓、安神机、通浊邪、维持治疗连续性，不宜单纯抗癌", "不排斥现代医学，帮助医者理解现代治疗造成的冲气改变"],
+      "falsifiable_claims": [
+        "若现代干预的冲气损伤定位（化疗伤体层/相水/肾水/用层；放疗伤津耗气）正确，则按该定位选定的针对性调理相比非针对性通用支持，应使预设毒副反应指标显著更优；若针对性调理不优于通用支持，则损伤定位被证伪"
+      ],
+      "source": "integrative-medicine"
+    },
+    {
+      "@id": "dcx:xin-as-ming",
+      "@type": "dcx:Concept",
+      "name": "心即冲气之明",
+      "pinyin": "xīn jí chōng qì zhī míng",
+      "category": "application",
+      "definition": "心不是气之外的主宰、不是灵魂实体，而是冲气自知、自明、自我调节的能力。",
+      "ontology_status": "无自性——心不是实体，是冲气的自明能力。",
+      "attributes": [
+        "冲气清明→心明；郁滞→心闷；浮越→心烦；虚陷→心怯；痰蒙→心昏；瘀阻→心痛；归中→心安"
+      ],
+      "usage_grammar": ["治心不只在「安神」，而在辨冲气何以不明：肾水不足（水火既济）、痰浊上蒙（化痰开窍）、气血不足（养心益气）等"],
+      "falsifiable_claims": [],
+      "source": "xin-as-chongqi-ming"
+    },
+    {
+      "@id": "dcx:liangzhi",
+      "@type": "dcx:Concept",
+      "name": "良知",
+      "pinyin": "liáng zhī",
+      "category": "application",
+      "definition": "生命系统未被私欲、恐惧、执着扭曲时，对自身状态与行动方向的直接明觉。",
+      "ontology_status": "无自性——良知不是抽象道德实体，是冲气之明的未被扭曲态。",
+      "attributes": [
+        "知道何时该进/退、说/默、扶/放、补/通、用力/松手",
+        "临床中良知是大量经典、经验、观察、反馈训练后，冲气之明对患者状态的直接把握，不是主观任性"
+      ],
+      "usage_grammar": [],
+      "falsifiable_claims": [],
+      "source": "xin-as-chongqi-ming"
+    },
+    {
+      "@id": "dcx:wo-zhi",
+      "@type": "dcx:Concept",
+      "name": "我执",
+      "pinyin": "wǒ zhí",
+      "category": "application",
+      "definition": "冲气流动中的「抓取模式」——某个念头、身份、情绪、欲望、恐惧被抓住不放，局部漩涡误认自己是全部。",
+      "ontology_status": "病理模式——抓取是冲气流动的局部固化（「熏习固化」的心学表达）。",
+      "attributes": [
+        "表现为紧张、焦虑、控制、对抗、恐惧死亡、执着疗效/名相/模型",
+        "修行不是消灭生命而是看见抓取；看见本身，就是松动"
+      ],
+      "usage_grammar": [],
+      "falsifiable_claims": [
+        "若「看见本身即松动」成立，则在诱发抓取状态后，仅给予觉照标记干预（不压制不替换）组的紧张/执着指标下降幅度应显著大于等时中性分心对照组；若觉照组不优于分心组，则该命题被证伪"
+      ],
+      "source": "xin-as-chongqi-ming"
+    },
+    {
+      "@id": "dcx:zhuan-shi-cheng-zhi",
+      "@type": "dcx:Concept",
+      "name": "转识成智",
+      "pinyin": "zhuǎn shí chéng zhì",
+      "category": "application",
+      "definition": "冲气被末那识抓取形成「我」→「我」被觉照看见→抓取松开→冲气回到本然流动。",
+      "ontology_status": "过程描述——抓取松开的动力学；可观察核心与「我执」的「看见即松动」同一。",
+      "attributes": [],
+      "usage_grammar": [],
+      "falsifiable_claims": [],
+      "source": "xin-as-chongqi-ming"
+    },
+    {
+      "@id": "dcx:cultivation",
+      "@type": "dcx:Concept",
+      "name": "修行四维度",
+      "pinyin": "xiū xíng",
+      "category": "application",
+      "definition": "治病只是入口，真正归宿是让生命从被困的局部状态回到更清明、自由、中和的整体流动；四维度：养体（保护生命资本）/明用（净化觉知调控）/调象（平衡功能网络）/通道（疏通运行路径）。",
+      "ontology_status": "应用框架——修行的道冲结构化；中和为归宿。",
+      "attributes": [
+        "养体：饮食、睡眠、药食、节欲、适度运动",
+        "明用：觉察、静坐、反省、致良知",
+        "调象：调脾胃、疏肝胆、养心神、固肾水",
+        "通道：导引、呼吸、针灸、经络、汗吐下和诸法",
+        "修行不是压制，而是观照——在冲气升起时知道它升起"
+      ],
+      "usage_grammar": ["中和为归宿：冲阳能发而不亢、冲阴能藏而不闭——该动时能动，该静时能静"],
+      "falsifiable_claims": [
+        "若「修行（观照而非压制）导向中和」成立，则长期非压制式观照练习者其心理/生理灵活性应显著高于压制策略组与无练习对照；若观照组灵活性不高于压制组或对照，或反而僵化，则「修行导向中和」被证伪"
+      ],
+      "source": "practice-and-cultivation"
+    },
+    {
+      "@id": "dcx:flow-resilience",
+      "@type": "dcx:Concept",
+      "name": "流动韧性",
+      "pinyin": "liú dòng rèn xìng",
+      "category": "application",
+      "definition": "冲气在被扰动之后多快能恢复其自然流动节律；健康不是「不生病」，而是「生病后多快恢复」。",
+      "ontology_status": "操作性指标——流动稳态的量化展开。",
+      "attributes": [
+        "四维度：感知（知道自己被扰动了吗）/响应（能有效回应吗）/支撑（根基够不够撑住恢复）/学习（每次恢复后下次更快吗）",
+        "扰动→感知→响应→恢复→学习的循环",
+        "过度保护让恢复系统退化——健康策略不是避免一切扰动"
+      ],
+      "usage_grammar": ["在适度、可控的扰动中完整走完恢复循环；扰动不能大到无法自行恢复，也不能小到不触发恢复机制"],
+      "falsifiable_claims": [
+        "若「过度保护使恢复系统退化」成立，则长期处于过度保护（扰动被系统性屏蔽）的一组，在标准化扰动后恢复到基线的时间应显著长于常规扰动暴露对照组；若过度保护组恢复时间等于或短于对照，则该主张被证伪"
+      ],
+      "source": "health-preservation-flow-resilience"
+    },
+    {
+      "@id": "dcx:six-meridian",
+      "@type": "dcx:Concept",
+      "name": "六经传变",
+      "pinyin": "liù jīng chuán biàn",
+      "category": "application",
+      "definition": "六经不是六个解剖器官/经络线路/疾病标签，而是冲气在人体流动的六个功能层次（太阳/阳明/少阳/太阴/少阴/厥阴）；疾病是冲气在这六个层次中被困住、逐层深入的过程。",
+      "ontology_status": "诠释框架——把六经读作冲气传变通道地图；传变序列由模型公理演绎得出，非独立于症状的经验观察。",
+      "attributes": [
+        "太阳→阳明→少阳→太阴→少阴→厥阴传变序列",
+        "仲景把「时间」引入辨证：从空间分类到时间追踪",
+        "方证为精密信号矩阵（桂枝汤/麻黄汤/小柴胡汤等）"
+      ],
+      "usage_grammar": [],
+      "falsifiable_claims": [],
+      "source": "zhang-zhongjing-dao-chong"
     }
   ],
 
@@ -383,6 +575,132 @@
       "type": "has_ideal_state",
       "label": "理想态为和合",
       "description": "流动稳态的理想态是「和合」——流动畅通、节律自稳，不枯竭也不泛滥（「道冲，而用之或不盈」）。"
+    },
+    {
+      "@id": "dcx:rel-16",
+      "@type": "dcx:Relation",
+      "from": "dcx:signal",
+      "to": "dcx:chong-qi",
+      "type": "modifies",
+      "label": "改变冲气流动状态",
+      "description": "冲气信号是凡进入系统并改变冲气流动状态者。"
+    },
+    {
+      "@id": "dcx:rel-17",
+      "@type": "dcx:Relation",
+      "from": "dcx:ti-yong-xiang-dao",
+      "to": "dcx:signal",
+      "type": "recodes",
+      "label": "体用象道重新编码信号",
+      "description": "同一信号进入不同系统，被不同体用象道重新编码，产生不同输出。"
+    },
+    {
+      "@id": "dcx:rel-18",
+      "@type": "dcx:Relation",
+      "from": "dcx:signal-matrix",
+      "to": "dcx:signal",
+      "type": "composed_of",
+      "label": "方剂由信号组合而成",
+      "description": "方剂（信号矩阵）是多个冲气信号按体用象道角色组合成的矩阵。"
+    },
+    {
+      "@id": "dcx:rel-19",
+      "@type": "dcx:Relation",
+      "from": "dcx:feedback-loop",
+      "to": "dcx:signal",
+      "type": "processes",
+      "label": "处理信号输出",
+      "description": "反馈闭环把处方后的系统变化当作新信号输入，动态修正。"
+    },
+    {
+      "@id": "dcx:rel-20",
+      "@type": "dcx:Relation",
+      "from": "dcx:modern-intervention",
+      "to": "dcx:signal",
+      "type": "exemplifies",
+      "label": "现代干预是冲气信号",
+      "description": "化疗/免疫/靶向/放疗是现代医学干预，也是改变冲气流动状态的信号。"
+    },
+    {
+      "@id": "dcx:rel-21",
+      "@type": "dcx:Relation",
+      "from": "dcx:ti-yong-xiang-dao",
+      "to": "dcx:xin-as-ming",
+      "type": "expands_to",
+      "label": "用维度展开为心之明",
+      "description": "体用象道的「用」（生命自我调控）维度展开为「心即冲气之明」。"
+    },
+    {
+      "@id": "dcx:rel-22",
+      "@type": "dcx:Relation",
+      "from": "dcx:liangzhi",
+      "to": "dcx:xin-as-ming",
+      "type": "is_aspect_of",
+      "label": "良知是心之明的未被扭曲态",
+      "description": "良知是冲气之明未被私欲恐惧执着扭曲时的直接明觉。"
+    },
+    {
+      "@id": "dcx:rel-23",
+      "@type": "dcx:Relation",
+      "from": "dcx:wo-zhi",
+      "to": "dcx:disease-as-trapped-flow",
+      "type": "exemplifies",
+      "label": "我执是熏习固化的心学表达",
+      "description": "我执（抓取模式）是「熏习固化」这一病理模式在心理层面的表达。"
+    },
+    {
+      "@id": "dcx:rel-24",
+      "@type": "dcx:Relation",
+      "from": "dcx:zhuan-shi-cheng-zhi",
+      "to": "dcx:wo-zhi",
+      "type": "releases",
+      "label": "转识成智是抓取松开",
+      "description": "转识成智描述抓取被觉照看见→松开→冲气回到本然流动的过程。"
+    },
+    {
+      "@id": "dcx:rel-25",
+      "@type": "dcx:Relation",
+      "from": "dcx:cultivation",
+      "to": "dcx:ti-yong-xiang-dao",
+      "type": "applies",
+      "label": "修行四维度对应体用象道",
+      "description": "修行四维度（养体/明用/调象/通道）对应体用象道四重脚手架。"
+    },
+    {
+      "@id": "dcx:rel-26",
+      "@type": "dcx:Relation",
+      "from": "dcx:flow-resilience",
+      "to": "dcx:flow-as-stability",
+      "type": "operationalizes",
+      "label": "流动韧性是流动稳态的量化",
+      "description": "流动韧性把「流动即稳定」量化为「被扰动后多快恢复流动节律」。"
+    },
+    {
+      "@id": "dcx:rel-27",
+      "@type": "dcx:Relation",
+      "from": "dcx:flow-resilience",
+      "to": "dcx:he-he",
+      "type": "has_ideal_state",
+      "label": "理想态为中和",
+      "description": "流动韧性的理想态是中和——冲阳能发而不亢、冲阴能藏而不闭。"
+    },
+    {
+      "@id": "dcx:rel-28",
+      "@type": "dcx:Relation",
+      "from": "dcx:six-meridian",
+      "to": "dcx:disease-as-trapped-flow",
+      "type": "elaborates",
+      "label": "六经是困的传变通道地图",
+      "description": "六经把「疾病=冲气被困」展开为冲气在六个功能层次中逐层深入的地图。"
+    },
+    {
+      "@id": "dcx:rel-29",
+      "@type": "dcx:Relation",
+      "from": "dcx:six-meridian",
+      "to": "dcx:signal-matrix",
+      "type": "exemplifies",
+      "label": "方证为信号矩阵",
+      "description": "仲景的每一张方都是针对冲气被困的精确位置与类型而设计的信号矩阵。"
     }
   ]
 }

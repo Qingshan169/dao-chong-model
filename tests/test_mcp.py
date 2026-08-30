@@ -46,7 +46,7 @@ def test_get_related_direction():
 
 def test_list_concepts_count():
     out = mcp_server.dao_chong_list_concepts()
-    assert len(out) == 14
+    assert len(out) == 25
     assert out[0]["id"].startswith("dcx:")
 
 

@@ -9,7 +9,7 @@
 - dao_chong_retrieve(query, limit)   按词/拼音检索概念
 - dao_chong_get_concept(ref)         取单个概念完整卡片
 - dao_chong_get_related(ref)         取概念关系邻域
-- dao_chong_list_concepts()          列出全部核心概念
+- dao_chong_list_concepts()          列出全部概念
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ from dao_chong.ontology import Ontology  # noqa: E402
 
 mcp = MCPServer(
     "dao-chong-model",
-    version="0.1.0",
+    version="0.2.0",
     instructions=(
         "道冲阴阳和合系统模型（Dao-Chong Model）核心本体查询工具。"
         "以「冲气」为核心的生命系统解释框架：冲气无自性，是关系—过程动态；"
@@ -90,7 +90,7 @@ def dao_chong_get_related(ref: str) -> list[dict[str, Any]]:
 
 @mcp.tool()
 def dao_chong_list_concepts() -> list[dict[str, Any]]:
-    """列出道冲模型全部核心概念（id/名称/拼音/类别/一句话定义），供按需深查。"""
+    """列出道冲模型全部概念（id/名称/拼音/类别/一句话定义），供按需深查。"""
     return [
         {
             "id": c["@id"],
