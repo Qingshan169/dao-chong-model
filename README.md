@@ -39,11 +39,55 @@
 
 概念类别：`core_concept`（核心）/ `scaffold`（脚手架）/ `functional_network`（功能网络）/ `pathology_model`（病理模型）/ `principle`（原则）/ `operational_grammar`（操作语法）。
 
+## 检索与调用
+
+### 命令行检索（L2）
+
+```bash
+# 检索层零依赖（仅标准库），直接用系统 python 即可
+PYTHONPATH=src python -m dao_chong retrieve "冲气"
+PYTHONPATH=src python -m dao_chong concept "dcx:flow-as-stability"
+PYTHONPATH=src python -m dao_chong related "dcx:chong-qi"
+```
+
+支持中文词、无调拼音（`xianghuo` → 相火象）与 `@id`（`dcx:chong-qi`）。
+
+### MCP 接口（L3）
+
+把道冲本体暴露成 MCP 工具，任何接入 MCP 的 agent（Claude Code、CQ-Agent 等）都能直接调用：
+
+```bash
+python -m venv .venv
+.venv/Scripts/python.exe -m pip install -e .   # 装 mcp 依赖并注册 dao-chong CLI
+```
+
+在 MCP 客户端（如 Claude Code 的 `.mcp.json`）加：
+
+```json
+{
+  "mcpServers": {
+    "dao-chong": {
+      "command": "<本仓库路径>/.venv/Scripts/python.exe",
+      "args": ["<本仓库路径>/mcp_server.py"]
+    }
+  }
+}
+```
+
+四个工具：
+
+| 工具 | 作用 |
+|---|---|
+| `dao_chong_retrieve(query, limit)` | 按词/拼音检索概念 |
+| `dao_chong_get_concept(ref)` | 取单概念完整卡片（定义/本体地位/可证伪主张/关系） |
+| `dao_chong_get_related(ref)` | 取概念关系邻域（in/out 方向 + 对端概念） |
+| `dao_chong_list_concepts()` | 列出全部 14 个核心概念 |
+
 ## 路线图
 
 - [x] **L1 结构化本体** — 本仓库的 `dao-chong-schema.json`
-- [ ] L2 可检索知识库 — 向量索引 + `retrieve(query)`
-- [ ] L3 可调用接口 — `dao-chong-mcp` / HTTP API
+- [x] **L2 可检索知识库** — `src/dao_chong/`（轻量结构化检索 + CLI）
+- [x] **L3 可调用接口** — `mcp_server.py`（MCP 工具，任何 agent 可调）
 - [ ] L4 可验证基准 — 评测集 + 可复现实验
 - [ ] L5 应用层扩展 — 中西医结合、心学唯识、修行、养生等概念的补充结构化
 
