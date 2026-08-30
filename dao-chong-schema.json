@@ -1,0 +1,388 @@
+{
+  "@context": {
+    "dcx": "https://daochong.model/ns#",
+    "@vocab": "https://daochong.model/ns#",
+    "dc": "http://purl.org/dc/terms/"
+  },
+  "@id": "dcx:dao-chong-model",
+  "@type": "dcx:Model",
+  "name": "道冲阴阳和合系统模型",
+  "name_en": "Dao-Chong Model of Yin-Yang Harmony",
+  "version": "0.1.0",
+  "model_version": "V3 (2026-08-15)",
+  "dc:description": "以冲气为核心的完整生命系统解释框架，贯通中医临床与儒释道哲学；冲气为关系—过程动态（无自性），体用象道为观察脚手架，流动即稳定为核心命题。",
+  "scope_note": "本文件为 L1 核心本体：只含理论骨架（约 14 概念），应用层（中西医结合、心学唯识、修行、养生等）待后续版本扩展。",
+
+  "concepts": [
+    {
+      "@id": "dcx:chong-qi",
+      "@type": "dcx:Concept",
+      "name": "冲气",
+      "pinyin": "chōng qì",
+      "category": "core_concept",
+      "definition": "生命—世界关系网络中持续发生的生成、聚散、升降、开合、反馈、回返与再组织等关系—过程动态的高层操作性总称。",
+      "ontology_status": "无自性（非实体）——早期「阴阳未分前的整体动力」实体化表述已撤销；冲气是方便的分析名，不是独立物质、唯一本体或终极实体。",
+      "attributes": ["无自性", "整体连续性（一气）", "关系—过程动态", "不可对象化"],
+      "usage_grammar": ["由名词转动词：问「何在生/化/聚/散/升/降/开/合/阻/复」，不问「冲气在哪」", "由断言转条件句：说明在何证据、尺度、时间窗下采用此名", "由结论转可撤销模型：反馈不应时改名、改权重或舍名"],
+      "falsifiable_claims": [
+        "若冲气确为无自性的分析名，则任何把冲气当作独立物质实体的解释，在临床或实验中都不应产生超出「关系描述」之外的预测力"
+      ],
+      "source": "chong-qi-ontology"
+    },
+    {
+      "@id": "dcx:chong-yang",
+      "@type": "dcx:Concept",
+      "name": "冲阳",
+      "pinyin": "chōng yáng",
+      "category": "core_concept",
+      "definition": "生命动力的外发、外显趋向——向外、向上、向动、向温、向明。",
+      "ontology_status": "冲气的两势之一（非独立实体）。",
+      "attributes": ["温煦", "推动", "升发", "运行", "代谢", "兴奋", "能升而不浮、能动而不躁、能温而不灼、能明而不亢"],
+      "usage_grammar": [],
+      "falsifiable_claims": [
+        "冲阳偏盛应表现为烦躁、失眠、上火、面赤、口苦、血压升高、火热亢盛等可观察症候群"
+      ],
+      "source": "chong-yang-chong-yin"
+    },
+    {
+      "@id": "dcx:chong-yin",
+      "@type": "dcx:Concept",
+      "name": "冲阴",
+      "pinyin": "chōng yīn",
+      "category": "core_concept",
+      "definition": "生命动力的内承、内守趋向——向内、向下、向静、向润、向藏。",
+      "ontology_status": "冲气的两势之一（非独立实体）。",
+      "attributes": ["滋养", "封藏", "沉降", "濡润", "修复", "稳定", "能藏而不闭、能润而不腻、能静而不滞、能降而不陷"],
+      "usage_grammar": [],
+      "falsifiable_claims": [
+        "冲阴偏衰应表现为潮热、盗汗、咽干、失眠、心烦、虚火上浮等可观察症候群"
+      ],
+      "source": "chong-yang-chong-yin"
+    },
+    {
+      "@id": "dcx:ti-yong-xiang-dao",
+      "@type": "dcx:Concept",
+      "name": "体用象道",
+      "pinyin": "tǐ yòng xiàng dào",
+      "category": "scaffold",
+      "definition": "观察冲气的四重认知脚手架：体（生命资本）、用（生命调控）、象（功能网络）、道（运行通道）。",
+      "ontology_status": "脚手架——不是生命真实存在的四个零件，只是四个观察角度；冲气本身不可分割。",
+      "attributes": [
+        "体：生命资本存量（先天禀赋、肾精元气、气血津液、营养储备、免疫耐受），是治疗强度的底盘",
+        "用：生命自我调控能力（近「神机」「心神」「少火生气」，心学中可称「良知」）",
+        "象：脏腑功能网络（道冲模型将传统五脏重构为四象）",
+        "道：冲气运行通道（宏观经络 / 中观三焦血脉肠腑 / 微观玄府腠理）"
+      ],
+      "usage_grammar": ["体不足不可一味攻伐，体有余而邪实不可过早壅补", "用弱则小扰动引起大波动，治法安用、明用、复用", "道阻则「有东西出不去」，治须给冲气通道、给邪气出路"],
+      "falsifiable_claims": [],
+      "source": "ti-yong-xiang-dao"
+    },
+    {
+      "@id": "dcx:four-images-network",
+      "@type": "dcx:Concept",
+      "name": "四象功能网络",
+      "pinyin": "sì xiàng gōng néng wǎng luò",
+      "category": "functional_network",
+      "definition": "体用象道「象」维度的展开：把传统五脏关系重构为一个动力网络（君火象—相火象—肾水象—相水象），关键看动力如何传导，而非见症治症。",
+      "ontology_status": "功能网络——不替代五脏，而是重构其动力关系。",
+      "attributes": [
+        "六种常见传变：相水困君火 / 相火犯相水 / 肾水不济君火 / 相火不足不能温相水 / 体虚致四象失养 / 道阻反困四象"
+      ],
+      "usage_grammar": [],
+      "falsifiable_claims": [
+        "若「相水困君火」成立，则改善脾胃肺运化（化痰浊）应改善神明症状（如烦躁、失眠、神识不清）"
+      ],
+      "source": "four-images-network"
+    },
+    {
+      "@id": "dcx:jun-huo-xiang",
+      "@type": "dcx:Concept",
+      "name": "君火象",
+      "pinyin": "jūn huǒ xiàng",
+      "category": "functional_network",
+      "definition": "四象之一「明」：对应心脑神明系统，主清明、整合、统摄、决策（冲阳之明）。",
+      "ontology_status": "功能网络的节点。",
+      "attributes": ["正常：神志清楚、睡眠安稳、判断准确、情绪有主", "不足：神疲、健忘、反应迟钝", "扰动：失眠、烦躁、焦虑、谵妄、心悸", "关键词：明、定、安、统"],
+      "usage_grammar": ["治君火不可只清心安神：须辨肾水不足（水火既济）、痰浊上蒙（化痰开窍）、气血不足（养心益气）、肝火上扰（柔肝潜阳）、阳虚神浮（温阳摄神）"],
+      "falsifiable_claims": [],
+      "source": "four-images-network"
+    },
+    {
+      "@id": "dcx:xiang-huo-xiang",
+      "@type": "dcx:Concept",
+      "name": "相火象",
+      "pinyin": "xiàng huǒ xiàng",
+      "category": "functional_network",
+      "definition": "四象之一「动」：对应肝、胆、命门，是生命动力的调度与执行系统（冲阳之动）。",
+      "ontology_status": "功能网络的节点。",
+      "attributes": ["正常：气机条达、胆气决断、代谢有力、情志舒展", "郁滞：胁肋不舒、口苦、胸闷、情志抑郁", "妄动：烦躁易怒、血压升高、头胀、失眠", "不足：畏寒、乏力、阳痿、少气懒言", "关键词：疏、达、升、动、调度"],
+      "usage_grammar": ["辨郁/亢/虚/陷：郁则疏之，亢则潜之，虚则温之，陷则升之"],
+      "falsifiable_claims": [],
+      "source": "four-images-network"
+    },
+    {
+      "@id": "dcx:shen-shui-xiang",
+      "@type": "dcx:Concept",
+      "name": "肾水象",
+      "pinyin": "shèn shuǐ xiàng",
+      "category": "functional_network",
+      "definition": "四象之一「藏」：生命深层资本系统，主封藏、修复、骨髓、精血、根基（冲阴之藏）。",
+      "ontology_status": "功能网络的节点。",
+      "attributes": ["充足：精力有根、睡眠能沉、骨髓能生、阴阳能互根", "不足：腰膝酸软、耳鸣、潮热、盗汗、虚火浮越", "肾阳不足：畏寒、水肿、封藏无力", "肾不纳气：气短喘促", "关键词：藏、根、精、髓、封"],
+      "usage_grammar": ["补肾必须看中焦：相水象运化不行时，滋腻补肾可能碍胃助湿"],
+      "falsifiable_claims": [],
+      "source": "four-images-network"
+    },
+    {
+      "@id": "dcx:xiang-shui-xiang",
+      "@type": "dcx:Concept",
+      "name": "相水象",
+      "pinyin": "xiàng shuǐ xiàng",
+      "category": "functional_network",
+      "definition": "四象之一「化降」：包括脾、胃、肺，是后天加工、输布、肃降、排浊系统（冲阴之化降）。",
+      "ontology_status": "功能网络的节点。",
+      "attributes": ["正常：食纳可、二便调、痰湿少、气机降", "失化：纳呆、腹胀、苔腻、痰多、便溏、困重", "不降：咳喘、恶心、呕吐、呃逆、反酸、便秘", "关键词：化、布、降、运、出路"],
+      "usage_grammar": ["许多慢病调理首要不在大补，而在恢复相水象"],
+      "falsifiable_claims": [],
+      "source": "four-images-network"
+    },
+    {
+      "@id": "dcx:disease-as-trapped-flow",
+      "@type": "dcx:Concept",
+      "name": "疾病本质：困",
+      "pinyin": "kùn",
+      "category": "pathology_model",
+      "definition": "疾病不是单一器官的孤立损坏，而是可化、可转、可退、可复与未来可达空间缩小，局部状态或依赖回路自我强化，摩擦升高而回返、纠错与再组织能力下降。",
+      "ontology_status": "病理模型——统一描述冲气流动受阻。",
+      "attributes": [
+        "六类病理模式：资本困顿（无力无储恢复慢）/ 通道困阻（过不去或边界失调）/ 枢转困顿（不会转、多枢失耦）/ 调控失度（应得不对、资源错配）/ 熏习固化（总走老路）/ 网络失协（局部能活、整体失和）",
+        "三个重要病理机制：资源劫持（局部回路占用资本）/ 代偿反噬（短期保护长期不退出）/ 程序关闭失败（免疫情绪兴奋药物不能适时停止）",
+        "共同特征：自由度下降、可化空间缩小、摩擦升高、自我强化、回返困难"
+      ],
+      "usage_grammar": ["治疗核心：解困（增加自由度）+ 养正（增强正确路径）", "扶正偏生命之能，养正偏生命之向", "见象必须追机，辨证而不住证"],
+      "falsifiable_claims": [
+        "若「困 = 可化空间缩小」成立，则慢性病治疗中「解困」（恢复可化空间）应优于或至少不劣于单纯补益"
+      ],
+      "source": "disease-as-trapped-flow"
+    },
+    {
+      "@id": "dcx:flow-as-stability",
+      "@type": "dcx:Concept",
+      "name": "流动稳态",
+      "pinyin": "liú dòng wěn tài",
+      "category": "principle",
+      "definition": "对生命系统而言，「不动」不是稳定而是死亡；冲气的持续流动才是系统稳定性的真正保证。稳定是流动稳态（dynamic steady state），而非各力抵消的静止平衡。",
+      "ontology_status": "核心命题——直接挑战从机械世界借来的静止平衡直觉。",
+      "attributes": [
+        "静止平衡（石头）vs 流动稳态（溪流）：修复是「恢复流动节律」而非「推回原位」，失败模式是「停滞/泛滥/枯竭」而非「位移」",
+        "自愈的本质：冲气的本质趋向就是流动，只要阻碍被移除，流动自行恢复——医者做的是「解困」，修复是冲气自己做的",
+        "最高治疗境界是「不治」：只移除障碍，不干涉流动本身的方向"
+      ],
+      "usage_grammar": ["一切治法归三种操作：补其源（恢复体层资源池）/ 调其向（纠正用层调度）/ 通其道（打开通道阻塞）", "汗吐下消都是「给出路」", "补法不是往身体塞东西，而是恢复流动的源头"],
+      "falsifiable_claims": [
+        "若流动稳态成立，则仅压制异常指标（不恢复流动）应导致停药后反弹或「指标正常但人越来越差」",
+        "若流动稳态成立，则移除流动障碍（解困）应比强行压制指标更能促进长期自愈"
+      ],
+      "source": "flow-as-stability"
+    },
+    {
+      "@id": "dcx:six-operations",
+      "@type": "dcx:Concept",
+      "name": "六横向操作语法",
+      "pinyin": "shū céng tiáo jiè jī yào shì",
+      "category": "operational_grammar",
+      "definition": "V3 架构的六个横向操作语法：枢、层、调、界、积、药势——是操作冲气的通用语法，非新增层级。",
+      "ontology_status": "操作语法——跨层级通用，不扩张永久层级。",
+      "attributes": [
+        "枢：高信息高杠杆的转换接口（信息/动力/资源/状态/通路/心智六型；穴≠枢，机变枢迁）",
+        "层：病势已达的深度、范围、方向",
+        "调：有限资源的储备、分配、再配置（生→储→调→用→耗→复）",
+        "界：差异成立、交换发生、责任分配的接口（辨而不裂，通而不滥）",
+        "积：微小输入经重复沉淀为路径与资本（觉→松→转→行→积→成）",
+        "药势：药性×方势×人态相遇后的综合推动（药效 = 输入质量×药性×剂量×配伍×制备×人态×时机×通路×暴露历史）"
+      ],
+      "usage_grammar": [],
+      "falsifiable_claims": [],
+      "source": "dao-chong-v3-architecture"
+    },
+    {
+      "@id": "dcx:meta-principles",
+      "@type": "dcx:Concept",
+      "name": "七项元原则",
+      "pinyin": "qī xiàng yuán yuán zé",
+      "category": "operational_grammar",
+      "definition": "V3 架构的七个元原则/操作深化：极—化—传—转（动力学）、镜（宗镜原则）、翼（知识迭代）、备（全程治理）、接口（干预学），均不扩张层级。",
+      "ontology_status": "元原则——模型的操作深化与自我警戒。",
+      "attributes": [
+        "极—化—传—转：缘→化→积→近极→机→转→新态",
+        "镜：立模—异议—举证；会通三级（同义异名/异层互补/真实竞争）；镜循环 = 立镜→照象→辨异→质疑→引证→反照→验变→换镜",
+        "翼：用→验→察缺→校误→重组→补充→再用；补—校—重—删；反完结主义",
+        "备：治—养—备三时间方向；平时有备→病来能应→急时抓枢→稳后退法→病后复本→重建余量",
+        "接口：目标态→接口→信号→反馈；机制与证据分开验证",
+        "三环闭环：病例环（判断是否成立）→ 模型环（哪个解释更好）→ 知识环（补校重删）"
+      ],
+      "usage_grammar": ["四不住：不住象/证/法/模；四善用：善观象/辨机/用法/验模", "模型最高成熟度 = 知道什么不能解释，并在现实与模型冲突时先改模型"],
+      "falsifiable_claims": [
+        "定枢（找出第一矛盾）能减少回答偏题",
+        "照验（外部核验）能减少事实幻觉",
+        "归藏门控（有选择写入记忆）能减少持续学习中的记忆污染"
+      ],
+      "source": "dao-chong-v3-architecture"
+    },
+    {
+      "@id": "dcx:he-he",
+      "@type": "dcx:Concept",
+      "name": "和合",
+      "pinyin": "hé hé",
+      "category": "principle",
+      "definition": "和合 = 互根 + 有界 + 可转 + 合时（禁止阴阳静态 50:50）。「和」不是静止的平衡点，而是流动畅通、节律自稳的状态。",
+      "ontology_status": "冲气流动的理想态（「道冲，而用之或不盈」——不盈即不枯竭也不泛滥）。",
+      "attributes": [
+        "阴平阳秘 = 冲阳冲阴在流动中各自发挥作用但彼此不压制",
+        "五行生克 = 五个功能相位之间的流动节律",
+        "天人合一 = 人体冲气流动与天地冲气流动之间的节律共振"
+      ],
+      "usage_grammar": [],
+      "falsifiable_claims": [],
+      "source": "flow-as-stability"
+    }
+  ],
+
+  "relations": [
+    {
+      "@id": "dcx:rel-1",
+      "@type": "dcx:Relation",
+      "from": "dcx:chong-qi",
+      "to": "dcx:chong-yang",
+      "type": "has_tendency",
+      "label": "两势之一（发/外显）",
+      "description": "冲气表现为冲阳之外发、外显趋向。"
+    },
+    {
+      "@id": "dcx:rel-2",
+      "@type": "dcx:Relation",
+      "from": "dcx:chong-qi",
+      "to": "dcx:chong-yin",
+      "type": "has_tendency",
+      "label": "两势之一（承/内守）",
+      "description": "冲气表现为冲阴之内承、内守趋向。"
+    },
+    {
+      "@id": "dcx:rel-3",
+      "@type": "dcx:Relation",
+      "from": "dcx:chong-yang",
+      "to": "dcx:chong-yin",
+      "type": "contraposes",
+      "label": "对立互补",
+      "description": "冲阳冲阴对立互补，理想态为「和合」（互根、有界、可转、合时）。"
+    },
+    {
+      "@id": "dcx:rel-4",
+      "@type": "dcx:Relation",
+      "from": "dcx:chong-qi",
+      "to": "dcx:ti-yong-xiang-dao",
+      "type": "observed_via",
+      "label": "经由脚手架观察",
+      "description": "冲气本身不可分割，临床须经体用象道四重脚手架分析。"
+    },
+    {
+      "@id": "dcx:rel-5",
+      "@type": "dcx:Relation",
+      "from": "dcx:ti-yong-xiang-dao",
+      "to": "dcx:four-images-network",
+      "type": "expands_to",
+      "label": "象维度展开",
+      "description": "体用象道的「象」维度展开为四象功能网络。"
+    },
+    {
+      "@id": "dcx:rel-6",
+      "@type": "dcx:Relation",
+      "from": "dcx:four-images-network",
+      "to": "dcx:jun-huo-xiang",
+      "type": "includes",
+      "label": "含君火象",
+      "description": "四象之一，主「明」。"
+    },
+    {
+      "@id": "dcx:rel-7",
+      "@type": "dcx:Relation",
+      "from": "dcx:four-images-network",
+      "to": "dcx:xiang-huo-xiang",
+      "type": "includes",
+      "label": "含相火象",
+      "description": "四象之一，主「动」。"
+    },
+    {
+      "@id": "dcx:rel-8",
+      "@type": "dcx:Relation",
+      "from": "dcx:four-images-network",
+      "to": "dcx:shen-shui-xiang",
+      "type": "includes",
+      "label": "含肾水象",
+      "description": "四象之一，主「藏」。"
+    },
+    {
+      "@id": "dcx:rel-9",
+      "@type": "dcx:Relation",
+      "from": "dcx:four-images-network",
+      "to": "dcx:xiang-shui-xiang",
+      "type": "includes",
+      "label": "含相水象",
+      "description": "四象之一，主「化降」。"
+    },
+    {
+      "@id": "dcx:rel-10",
+      "@type": "dcx:Relation",
+      "from": "dcx:chong-qi",
+      "to": "dcx:flow-as-stability",
+      "type": "manifests_as",
+      "label": "本质趋向即流动",
+      "description": "冲气的本质趋向就是流动，因此流动稳态才是系统稳定性的保证。"
+    },
+    {
+      "@id": "dcx:rel-11",
+      "@type": "dcx:Relation",
+      "from": "dcx:disease-as-trapped-flow",
+      "to": "dcx:chong-qi",
+      "type": "describes",
+      "label": "疾病=冲气被困",
+      "description": "疾病本质描述冲气流动受阻（可化空间缩小）。"
+    },
+    {
+      "@id": "dcx:rel-12",
+      "@type": "dcx:Relation",
+      "from": "dcx:flow-as-stability",
+      "to": "dcx:disease-as-trapped-flow",
+      "type": "unifies",
+      "label": "统一病理模式",
+      "description": "流动稳态命题将六类病理模式统一为「同一种流动的受阻方式」。"
+    },
+    {
+      "@id": "dcx:rel-13",
+      "@type": "dcx:Relation",
+      "from": "dcx:six-operations",
+      "to": "dcx:chong-qi",
+      "type": "operates_on",
+      "label": "操作冲气",
+      "description": "六横向操作语法是操作冲气的通用语法。"
+    },
+    {
+      "@id": "dcx:rel-14",
+      "@type": "dcx:Relation",
+      "from": "dcx:meta-principles",
+      "to": "dcx:dao-chong-model",
+      "type": "guides",
+      "label": "指导模型",
+      "description": "七项元原则指导道冲模型的运用与自我校正。"
+    },
+    {
+      "@id": "dcx:rel-15",
+      "@type": "dcx:Relation",
+      "from": "dcx:flow-as-stability",
+      "to": "dcx:he-he",
+      "type": "has_ideal_state",
+      "label": "理想态为和合",
+      "description": "流动稳态的理想态是「和合」——流动畅通、节律自稳，不枯竭也不泛滥（「道冲，而用之或不盈」）。"
+    }
+  ]
+}
