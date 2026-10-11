@@ -4,16 +4,28 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dao-chong-model"
-version = "0.1.0"
+version = "0.2.0"
 description = "道冲阴阳和合系统模型（Dao-Chong Model）——核心本体 + 检索层 + MCP 接口"
 readme = "README.md"
 requires-python = ">=3.10"
+license = { text = "CC BY-NC-SA 4.0" }
+authors = [
+    { name = "青山 (llq)" },
+]
+keywords = ["dao-chong", "chong-qi", "tcm", "ontology", "mcp", "traditional-chinese-medicine"]
 dependencies = [
     "mcp>=2",
 ]
 
+[project.urls]
+Repository = "https://github.com/Qingshan169/dao-chong-model"
+
 [project.scripts]
 dao-chong = "dao_chong.__main__:main"
+dao-chong-mcp = "dao_chong.server:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+dao_chong = ["dao-chong-schema.json"]

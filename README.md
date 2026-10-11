@@ -31,7 +31,7 @@
 
 ## 本体文件
 
-`dao-chong-schema.json` 是道冲模型核心本体的机器可读版本（JSON-LD，W3C 语义网标准）：
+`src/dao_chong/dao-chong-schema.json` 是道冲模型核心本体的机器可读版本（JSON-LD，W3C 语义网标准）：
 
 - **25 个概念**（核心 14 + 应用层 11）、**29 条关系**，构成一张有向图，锚点是冲气。
 - 每个概念含：`definition`（精确定义）、`ontology_status`（本体地位，防实体化）、`attributes`（关键属性）、`usage_grammar`（使用语法）、`falsifiable_claims`（可证伪主张）。
@@ -51,6 +51,30 @@ PYTHONPATH=src python -m dao_chong related "dcx:chong-qi"
 ```
 
 支持中文词、无调拼音（`xianghuo` → 相火象）与 `@id`（`dcx:chong-qi`）。
+
+### 一键安装（对外使用）
+
+```bash
+# 方式一：pip 从 GitHub 直装
+pip install git+https://github.com/Qingshan169/dao-chong-model.git
+
+# 方式二：uvx（MCP 生态推荐，无需预装）
+uvx --from git+https://github.com/Qingshan169/dao-chong-model.git dao-chong-mcp
+```
+
+装好后，在 MCP 客户端（Claude Code 的 `.mcp.json`、任意 MCP 客户端）里配一条：
+
+```json
+{
+  "mcpServers": {
+    "dao-chong": {
+      "command": "dao-chong-mcp"
+    }
+  }
+}
+```
+
+四个工具见下方「MCP 接口（L3）」。
 
 ### MCP 接口（L3）
 
@@ -90,6 +114,12 @@ python -m venv .venv
 ```bash
 python benchmarks/run_benchmark.py --run-id demo-001
 ```
+
+## 实验（Experiments）
+
+`experiments/` 存放道冲模型的**预注册实验协议**——不是「自我证明」，而是「允许道冲被明确杀死」的可证伪实验。
+
+- **Experiment-01**（[experiment-01-protocol.md](experiments/experiment-01-protocol.md)）：纵向状态迁移实验（PILOT 版，合成病例）。检验「道冲认知表示相对通用结构化表示是否产生特异性可计算差异」，含死亡条款、六变量操作化与消融实验。
 
 ## 路线图
 

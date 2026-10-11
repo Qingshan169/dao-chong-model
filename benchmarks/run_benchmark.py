@@ -25,9 +25,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from dao_chong.ontology import SCHEMA_PATH  # noqa: E402
+
 BENCH_DIR = ROOT / "benchmarks"
 CLAIMS_PATH = BENCH_DIR / "claims.json"
-SCHEMA_PATH = ROOT / "dao-chong-schema.json"
 
 
 def _sha256(text: str) -> str:

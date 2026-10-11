@@ -4,4 +4,4 @@ from .ontology import Ontology, normalize_pinyin, SCHEMA_PATH
 
 __all__ = ["Ontology", "normalize_pinyin", "SCHEMA_PATH"]
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

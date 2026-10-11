@@ -15,7 +15,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-SCHEMA_PATH = Path(__file__).resolve().parents[2] / "dao-chong-schema.json"
+SCHEMA_PATH = Path(__file__).resolve().parent / "dao-chong-schema.json"
 
 # 拼音去声调映射（ü 用 v 代，匹配输入法习惯）
 _ACCENT_MAP = str.maketrans({
