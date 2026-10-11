@@ -1,6 +1,6 @@
 """检索层单元测试（标准库，无需 pytest）。
 
-运行：python tests/test_retrieve.py
+运行：.venv/Scripts/python.exe tests/test_retrieve.py
 """
 
 import sys

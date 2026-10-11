@@ -44,10 +44,10 @@
 ### 命令行检索（L2）
 
 ```bash
-# 检索层零依赖（仅标准库），直接用系统 python 即可
-PYTHONPATH=src python -m dao_chong retrieve "冲气"
-PYTHONPATH=src python -m dao_chong concept "dcx:flow-as-stability"
-PYTHONPATH=src python -m dao_chong related "dcx:chong-qi"
+# 检索层零依赖（仅标准库）；本机 python 是 Windows Store stub，统一用 .venv 的 python
+PYTHONPATH=src .venv/Scripts/python.exe -m dao_chong retrieve "冲气"
+PYTHONPATH=src .venv/Scripts/python.exe -m dao_chong concept "dcx:flow-as-stability"
+PYTHONPATH=src .venv/Scripts/python.exe -m dao_chong related "dcx:chong-qi"
 ```
 
 支持中文词、无调拼音（`xianghuo` → 相火象）与 `@id`（`dcx:chong-qi`）。
@@ -112,7 +112,7 @@ python -m venv .venv
 `benchmarks/` 把每个概念的 `falsifiable_claims` 变成可复现实验框架。经对抗验证，16 条主张中**7 条当前真正可证伪**（核心 1 + 应用层 6），其余 9 条为伪可证伪（同义反复/缺如型/异质捆绑），每条附修正方案。详见 [benchmarks/](benchmarks/)。
 
 ```bash
-python benchmarks/run_benchmark.py --run-id demo-001
+.venv/Scripts/python.exe benchmarks/run_benchmark.py --run-id demo-001
 ```
 
 ## 实验（Experiments）
